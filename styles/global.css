@@ -1,0 +1,40 @@
+:root {
+
+}
+
+/* ::-webkit-scrollbar {
+
+}
+
+::-webkit-scrollbar-track {
+
+}
+ 
+::-webkit-scrollbar-thumb {
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+
+} */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box !important;
+}
+html {
+    font-size: 62.5%;
+}
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+.row {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}
+.col {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+}
