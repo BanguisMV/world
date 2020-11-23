@@ -58,7 +58,7 @@ const Map = ({ volcanoes, earthquakes }) => {
         center={position} 
         minZoom={3}
         zoom={mobile ? 8 : 5} 
-        scrollWheelZoom={!mobile && false}>
+        scrollWheelZoom={false}>
 
         <TileLayer
           noWrap={true}
