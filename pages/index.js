@@ -1,15 +1,22 @@
+import { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
-import {NextSeo} from 'next-seo';
+import { NextSeo } from 'next-seo';
 const Map = dynamic(
   () => import('../components/Map'),
   { ssr: false }
 )
 
 const Home = ({volcanoes}) => {
+
+  const [loaded, setLoaded] = useState(false)
+  useEffect(() => {
+    volcanoes ? setLoaded(true) :  setLoaded(false)
+   
+  },[])
   return (
    <section style={{ height: '100vh', width: '100%' }} >
       <NextSeo  title="World" />
-      <Map volcanoes={volcanoes} />
+     {loaded ?  <Map volcanoes={volcanoes} /> : <h1>Loading...</h1>}
     </section>
   )
 }
