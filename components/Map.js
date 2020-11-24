@@ -9,11 +9,14 @@ const earthquakesColor2 = { color: '  #6ce41c' }
 
 const Map = ({ volcanoes, earthquakes }) => {
 
- 
     const mobile = useMedia({maxWidth: 500});
+    
+    //Default Position Philippines
     const position = [12.8797, 121.7740]
+
       return (
         <Fragment>
+
           <div className='legends'>
             <div className='total legend'>
                 <p>Approximately</p>
@@ -38,8 +41,8 @@ const Map = ({ volcanoes, earthquakes }) => {
         style={{ height: '100%', width: '100%' }}
         center={position} 
         minZoom={3}
-        zoom={5} 
-        scrollWheelZoom={false}>
+        zoom={mobile ? 8 : 5} 
+        scrollWheelZoom={!mobile && false}>
 
         <TileLayer
           noWrap={true}
@@ -87,13 +90,3 @@ const Map = ({ volcanoes, earthquakes }) => {
     }
     
 export default Map
-// const myIcon = L.icon({
-//   iconUrl: 'https://volcano.si.edu/includes/images/volcano_icon_16.ico',
-//   iconAnchor: [25, 41],
-//   iconSize: [50, 60],
-//   popupAnchor: [0, -41]
-// })
-
-//https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png
-//https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}
-//https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}
