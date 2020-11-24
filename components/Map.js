@@ -2,7 +2,7 @@ import { Fragment } from 'react'
 import { MapContainer, TileLayer, CircleMarker, Popup} from 'react-leaflet'
 import useMedia from 'use-media';
 
-const inactive = { color: '#c7beae' }
+const inactive = { color: '#141412' }
 const active = { color: '#d81111' }
 
 const Map = ({ volcanoes }) => {
@@ -28,12 +28,13 @@ const Map = ({ volcanoes }) => {
         <MapContainer 
         style={{ height: '100%', width: '100%' }}
         center={position} 
+        minZoom={2}
         zoom={mobile ? 8 : 2} 
         scrollWheelZoom={false}>
 
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
         { volcanoes.features.map(feature => (
