@@ -53,13 +53,6 @@ body {
         padding: .5rem 1.5rem;
         margin: .5rem;
     }
-    .legends {
-        left: 0 !important;
-        bottom: 0 !important;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
 }
 .legends {
     position: absolute;
