@@ -16,7 +16,7 @@ const Home = ({volcanoes, earthquakes}) => {
 
   return (
    <main className='container'>
-      <NextSeo  title="Worldcanoes" />
+      <NextSeo  title="WorldQuakeNoes" />
      {loaded ? <Map volcanoes={volcanoes} earthquakes={earthquakes} /> : 
      <h1 className='loader'>Loading<span className="dots"><span>.</span><span>.</span><span>.</span></span></h1>
      }
@@ -30,7 +30,6 @@ export async function getStaticProps(context) {
     fetch(`https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson`).then(r => r.json())
   ]);
   return { props: { volcanoes, earthquakes }, revalidate: 1 }
-  
 }
 // export async function getStaticProps(context) {
 //   const res = await fetch(`https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json`)

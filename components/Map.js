@@ -17,7 +17,7 @@ const Map = ({ volcanoes, earthquakes }) => {
           <div className='legends'>
             <div className='total legend'>
                 <p>Approximately</p>
-                <h2>{volcanoes.features.length}</h2>
+                <h2>{ volcanoes.features.length }</h2>
                 <p> Volcanoes in Total</p>
             </div>
             <div className='active legend'>
@@ -27,10 +27,10 @@ const Map = ({ volcanoes, earthquakes }) => {
                 <h2>inactive</h2>
             </div>
             <div className='up magnitude'>
-                <p>Magnitude 2 and up</p>
+                <p>Magnitude < 2</p>
             </div>
             <div className='below magnitude'>
-                <p>Magnitude 2 and below</p>
+                <p>Magnitude > 2</p>
             </div>
           </div>
 
