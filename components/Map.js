@@ -1,4 +1,4 @@
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 import { MapContainer, TileLayer, CircleMarker, Popup} from 'react-leaflet'
 import useMedia from 'use-media';
 
@@ -9,14 +9,16 @@ const earthquakesColor2 = { color: '  #6ce41c' }
 
 const Map = ({ volcanoes, earthquakes }) => {
 
-    const mobile = useMedia({maxWidth: 500});
-    
+  const mobile = useMedia({maxWidth: 500});
+  const [openLegend, setOpenLegend] = useState(true)
+
     //Default Position Philippines
     const position = [12.8797, 121.7740]
 
       return (
         <Fragment>
 
+{(!mobile ||  openLegend) &&
           <div className='legends'>
             <div className='total legend'>
                 <p>Approximately</p>
@@ -30,13 +32,13 @@ const Map = ({ volcanoes, earthquakes }) => {
                 <h2>inactive</h2>
             </div>
             <div className='up magnitude'>
-                <p>Magnitude higher 2 &#8593;</p>
+                <h2>Magnitude higher 2 &#8593;</h2>
             </div>
             <div className='below magnitude'>
-                <p>Magnitude 2 &#8595;</p>
+                <h2>Magnitude 2 &#8595;</h2>
             </div>
-          </div>
-
+          </div> }
+{mobile && <button className='legend_button' onClick={() => setOpenLegend(prev => !prev)}>☰</button> }
         <MapContainer 
         style={{ height: '100%', width: '100%' }}
         center={position} 
@@ -76,7 +78,7 @@ const Map = ({ volcanoes, earthquakes }) => {
                 radius={mobile ? 5 : 4}>
               <Popup className='pop_up'>
                   <div className='pop_child'>
-                    <h4 className='pop_h1' > {feature.properties.V_Name} Volcano </h4>
+                    <h2 className='pop_h2' > {feature.properties.V_Name} Volcano </h2>
                     <p className='pop_p' > Status: {feature.properties.H_active === 1  ? 'Active' : 'Inactive'}</p>
                     <p className='pop_p' > Erupted: {feature.properties.VEI_Holoce} </p>
                   </div>
