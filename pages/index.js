@@ -1,7 +1,32 @@
 import { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import { NextSeo } from 'next-seo';
+
 const Map = dynamic( () => import('../components/Map'),{ ssr: false })
+const SEO = {
+  type:'website',
+  url: 'https://world.vercel.app/',
+  title: 'Real time monthly monitoring of earthquakes and population of volcanoes',
+  site_name: 'WorldQuakeNoes',
+  canonical: 'https://world.vercel.app/',
+    images: [
+        {
+            url: 'https://world.vercel.app/earthquake.jpg',
+            alt: 'Bantay COVID',
+          },
+          {
+            url: 'https://world.vercel.app/earthquake.jpg',
+            alt: 'Bantay COVID',
+          },
+          { url: 'https://world.vercel.app/earthquake.jpg' },
+          { url: 'https://world.vercel.app/earthquake.jpg' },
+    ],
+      twitter: {
+        handle: '@handle',
+        site: 'https://world.vercel.app/',
+        cardType: 'https://world.vercel.app/earthquake.jpg',
+  }
+}
 
 const Home = ({ volcanoes, earthquakes }) => {
   const [loaded, setLoaded] = useState(false)
@@ -11,7 +36,11 @@ const Home = ({ volcanoes, earthquakes }) => {
 
   return (
    <main className='container'>
-      <NextSeo  title="WorldQuakeNoes" />
+      <NextSeo  
+        title="WorldQuakeNoes" 
+         description="A simple world map with data coming from USGS and data.humdata.org"
+         openGraph={SEO}
+      />
      {loaded ? <Map volcanoes={volcanoes} earthquakes={earthquakes} /> : 
       <h1 className='loader'>Loading
           <span className="dots">
