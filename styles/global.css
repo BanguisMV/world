@@ -28,13 +28,73 @@ html {
 }
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
+}
 
-.row {
-    margin-right: 0 !important;
-    margin-left: 0 !important;
+
+.loader {
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
-.col {
-    padding-right: 0 !important;
-    padding-left: 0 !important;
+
+.pop_h1 {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    color: rgba(34, 37, 37, 0.637);
 }
+.pop_p {
+    font-size: 1.5rem;
+    color: rgba(34, 37, 37, 0.637);
+    text-transform: uppercase;
+}
+@media (max-width:500px) {
+    .legend {
+        padding: .5rem 1.5rem;
+        margin: .5rem;
+    }
+    .legends {
+        left: 0 !important;
+        bottom: 0 !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+.legends {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 1rem;
+    z-index: 2000;
+}
+
+h2 {
+    text-transform: uppercase;
+}
+.container {
+    height: 100vh;
+    width: 100vw; 
+    display: flex; 
+    justify-content:center; 
+    align-items:center;
+}
+.legend {
+    text-align: center;
+    color:white;
+    padding: 1rem 2rem;
+    margin: 1rem;
+}
+.total p {
+    font-size: 1.2rem;
+}
+.total {
+    background-color: #2d2f30;
+}
+.inactive {
+    background-color: #c7beae;
+}
+.active {
+    background-color: #d81111;
+}
+
