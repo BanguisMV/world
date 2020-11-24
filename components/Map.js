@@ -20,26 +20,36 @@ const Map = ({ volcanoes, earthquakes }) => {
 
 {(!mobile ||  openLegend) &&
           <div className='legends'>
-            <div className='total legend'>
-                <p>Approximately</p>
-                <h2>{ volcanoes.features.length }</h2>
-                <p> Volcanoes in Total</p>
+            <h2 className='guide'>Guide</h2>
+      <div className='volcano'>
+        <h2>Volcano</h2>
+        <div className='total legend'>
+            <p>Approximately</p>
+             <p> <strong>{ volcanoes.features.length }</strong> </p>
+             <p> Volcanoes in Total</p>
+          </div>
+          <div className='active legend'>
+             <h2>Active</h2>
+           </div>
+          <div className='inactive legend'>
+             <h2>inactive</h2>
+        </div>
+      </div>  
+                  
+
+            <div className='earthquake'>
+            <h2>Earthquake</h2>
+              <div className='up magnitude'>
+                  <h2>Magnitude &#62; 3 &#8593;</h2>
+              </div>
+              <div className='below magnitude'>
+                  <h2>Magnitude &#60; 3 &#8595;</h2>
+              </div>
             </div>
-            <div className='active legend'>
-                <h2>Active</h2>
-            </div>
-            <div className='inactive legend'>
-                <h2>inactive</h2>
-            </div>
-            <div className='up magnitude'>
-                <h2>Magnitude &#62; 3 &#8593;</h2>
-            </div>
-            <div className='below magnitude'>
-                <h2>Magnitude &#60; 3 &#8595;</h2>
-            </div>
+        
           </div> }
 
-{mobile && <button className='legend_button' onClick={() => setOpenLegend(prev => !prev)}>☰</button> }
+{mobile && <button className='legend_button' onClick={() => setOpenLegend(prev => !prev)}>{openLegend ? '✖':'☰'}</button> }
         
         <MapContainer 
         style={{ height: '100%', width: '100%' }}

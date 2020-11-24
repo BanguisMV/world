@@ -38,7 +38,17 @@ h2 {
 }
 
 
-
+.volcano {
+    background-color: #eef6ff;
+    padding: 1rem;
+    text-align: center;
+}
+.earthquake{
+    background-color: #eef6ff;
+    padding: 1rem;
+    text-align: center;
+    margin-top: 1px;
+}
 .pop_h2 {
     color: rgba(34, 37, 37, 0.637);
 }
@@ -69,8 +79,14 @@ h2 {
     top: 0;
     margin: 1rem;
     z-index: 2000;
+    text-align: center;
 }
-
+.guide{
+    font-size: 1.5rem;
+    padding: 1px;
+    color:white;
+    background-color: #12a0b3;
+}
 .container {
     position: relative;
     height: 100vh;
@@ -97,10 +113,10 @@ h2 {
 }
 .total p {
     font-size: 1.2rem;
+    color: #141412;
+   text-transform: uppercase;
 }
-.total {
-    background-color: #2d2f30;
-}
+
 .inactive {
     background-color: #141412;
 }

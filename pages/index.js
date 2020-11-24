@@ -4,20 +4,19 @@ import { NextSeo } from 'next-seo';
 const Map = dynamic( () => import('../components/Map'),{ ssr: false })
 
 const Home = ({ volcanoes, earthquakes }) => {
-
   const [loaded, setLoaded] = useState(false)
 
-  //ONE LINE BRUTALITY WTF!!!!!!!
+  //ONE LINE??????????
   useEffect(() => setTimeout(() =>  volcanoes || earthquakes ? setLoaded(true) : setLoaded(false), 1000) ,[])
 
   return (
    <main className='container'>
       <NextSeo  title="WorldQuakeNoes" />
-     { loaded ? <Map volcanoes={volcanoes} earthquakes={earthquakes}  /> : 
-     <h1 className='loader'>Loading
-        <span className="dots">
-       <span>.</span><span>.</span><span>.</span></span>
-    </h1>
+     {loaded ? <Map volcanoes={volcanoes} earthquakes={earthquakes} /> : 
+      <h1 className='loader'>Loading
+          <span className="dots">
+        <span>.</span><span>.</span><span>.</span></span>
+      </h1>
      }
     </main>
   )
