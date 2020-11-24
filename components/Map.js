@@ -27,10 +27,10 @@ const Map = ({ volcanoes, earthquakes }) => {
                 <h2>inactive</h2>
             </div>
             <div className='up magnitude'>
-                <p>Magnitude < 2</p>
+                <p>Magnitude higher 2 &#8593;</p>
             </div>
             <div className='below magnitude'>
-                <p>Magnitude > 2</p>
+                <p>Magnitude 2 &#8595;</p>
             </div>
           </div>
 
@@ -47,38 +47,36 @@ const Map = ({ volcanoes, earthquakes }) => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        
-
           {earthquakes.features.map(earthquake => (
             <CircleMarker 
               key={earthquake.id}
               center={[ earthquake.geometry.coordinates.[1], earthquake.geometry.coordinates.[0] ]} 
               pathOptions={earthquake.properties.mag > 2 ? earthquakesColor : earthquakesColor2} 
               radius={6}>
+              <Popup> 
+                <div>
+                    <p>Magnitude: {earthquake.properties.mag}</p>
+                    <p>Location: {earthquake.properties.place}</p>
+                    <p>Date: {new Date(earthquake.properties.time).toDateString()}</p>
+                    <p>Updated: {new Date(earthquake.properties.updated).toDateString()}</p>
 
-            <Popup> 
-               <div>
-                <p>Location: {earthquake.properties.place}</p>
-                <p>Date: {new Date(earthquake.properties.time).toDateString()}</p>
-                <p>Magnitude: {earthquake.properties.mag}</p>
-               </div>
+                </div>
               </Popup> 
             </CircleMarker>
         ))}
 
         {volcanoes.features.map(feature => (
-            <CircleMarker 
-              key={feature.properties.VolcanoID}
-              center={[feature.properties.Latitude, feature.properties.Longitude]} 
-              pathOptions={feature.properties.H_active === 1 ? active : inactive} 
-              radius={mobile ? 5 : 4}>
-
-            <Popup className='pop_up'>
-              <div className='pop_child'>
-                <h4 className='pop_h1' > {feature.properties.V_Name} Volcano </h4>
-                <p className='pop_p' > Status: {feature.properties.H_active === 1  ? 'Active' : 'Inactive'}</p>
-                <p className='pop_p' > Erupted: {feature.properties.VEI_Holoce} </p>
-              </div>
+              <CircleMarker 
+                key={feature.properties.VolcanoID}
+                center={[feature.properties.Latitude, feature.properties.Longitude]} 
+                pathOptions={feature.properties.H_active === 1 ? active : inactive} 
+                radius={mobile ? 5 : 4}>
+              <Popup className='pop_up'>
+                  <div className='pop_child'>
+                    <h4 className='pop_h1' > {feature.properties.V_Name} Volcano </h4>
+                    <p className='pop_p' > Status: {feature.properties.H_active === 1  ? 'Active' : 'Inactive'}</p>
+                    <p className='pop_p' > Erupted: {feature.properties.VEI_Holoce} </p>
+                  </div>
               </Popup>
             </CircleMarker>
         ))}
