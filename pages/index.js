@@ -7,28 +7,27 @@ const Map = dynamic(
 )
 
 const Home = ({volcanoes, earthquakes}) => {
-console.log(earthquakes);
   const [loaded, setLoaded] = useState(false)
+
   useEffect(() => {
     setTimeout(() => {
-      volcanoes ? setLoaded(true) : setLoaded(false)
+      volcanoes || earthquakes ? setLoaded(true) : setLoaded(false)
     },1000)
   },[])
 
   return (
    <main className='container'>
       <NextSeo  title="Worldcanoes" />
-     { loaded ?  <Map volcanoes={volcanoes} /> : 
-     <h1 className='loader'>Loading...</h1>
+     {loaded ?  <Map volcanoes={volcanoes} earthquakes={earthquakes}/> : 
+     <h1 className='loader'>Loading<span className="dots"><span>.</span><span>.</span><span>.</span></span></h1>
      }
     </main>
   )
 }
-
+{/* <Map volcanoes={volcanoes} earthquakes={earthquakes}/>  */}
 export default Home
 
 export async function getStaticProps(context) {
-
   const [volcanoes, earthquakes] = await Promise.all([
     fetch(`https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json`).then(r => r.json()),
     fetch(`https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson`).then(r => r.json())

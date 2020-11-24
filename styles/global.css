@@ -30,12 +30,30 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+@keyframes dots-1 { from { opacity: 0; } 25% { opacity: 1; } }
+    @keyframes dots-2 { from { opacity: 0; } 50% { opacity: 1; } }
+    @keyframes dots-3 { from { opacity: 0; } 75% { opacity: 1; } }
+    @-webkit-keyframes dots-1 { from { opacity: 0; } 25% { opacity: 1; } }
+    @-webkit-keyframes dots-2 { from { opacity: 0; } 50% { opacity: 1; } }
+    @-webkit-keyframes dots-3 { from { opacity: 0; } 75% { opacity: 1; } }
 
-.loader {
-    position: absolute;
-    right: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+.dots span {
+    animation: dots-1 1s infinite steps(1);
+    -webkit-animation: dots-1 1s infinite steps(1);
+}
+
+.dots span:first-child + span {
+    animation-name: dots-2;
+    -webkit-animation-name: dots-2;
+}
+
+.dots span:first-child + span + span {
+    animation-name: dots-3;
+    -webkit-animation-name: dots-3;
+}
+
+h1 {
+    text-transform: uppercase;
 }
 
 .pop_h1 {
@@ -48,26 +66,32 @@ body {
     color: rgba(34, 37, 37, 0.637);
     text-transform: uppercase;
 }
-@media (max-width:500px) {
-    .legend {
-        padding: .5rem 1.5rem;
-        margin: .5rem;
-    }
-}
 .legends {
     position: absolute;
     right: 0;
-    top: 0;
+    bottom: 0;
     margin: 1rem;
     z-index: 2000;
+   
 }
+@media (max-width:500px) {
+ .legends {
+    left: 0;
+
+    display: flex;
+    align-items: center;
+ }
+}
+
+
 
 h2 {
     text-transform: uppercase;
+    font-size: 1rem;
 }
 .container {
     height: 100vh;
-    width: 100vw; 
+    width: 100%; 
     display: flex; 
     justify-content:center; 
     align-items:center;
@@ -75,7 +99,7 @@ h2 {
 .legend {
     text-align: center;
     color:white;
-    padding: 1rem 2rem;
+    padding: 5px 8px;
     margin: 1rem;
 }
 .total p {

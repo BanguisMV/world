@@ -5,13 +5,16 @@ import useMedia from 'use-media';
 const inactive = { color: '#141412' }
 const active = { color: '#d81111' }
 
-const Map = ({ volcanoes }) => {
+const Map = ({ volcanoes,earthquakes }) => {
+  console.log(earthquakes);
+
     const mobile = useMedia({maxWidth: 500});
-    const position = [1.8312, 78.1834]
+    const position = [12.8797, 121.7740]
       return (
         <Fragment>
 
           <div className='legends'>
+            
             <div className='total legend'>
                 <p>Approximately</p>
                 <h2>{volcanoes.features.length}</h2>
@@ -28,16 +31,16 @@ const Map = ({ volcanoes }) => {
         <MapContainer 
         style={{ height: '100%', width: '100%' }}
         center={position} 
-        minZoom={2}
-        zoom={mobile ? 8 : 2} 
+        minZoom={3}
+        zoom={5} 
         scrollWheelZoom={false}>
 
         <TileLayer
+          noWrap={true}
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-
-        { volcanoes.features.map(feature => (
+        {volcanoes.features.map(feature => (
             <CircleMarker 
               key={feature.properties.VolcanoID}
               center={[feature.properties.Latitude, feature.properties.Longitude]} 
