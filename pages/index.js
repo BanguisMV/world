@@ -13,7 +13,7 @@ const Home = ({ volcanoes, earthquakes }) => {
   return (
    <main className='container'>
       <NextSeo  title="WorldQuakeNoes" />
-     {loaded ? <Map volcanoes={volcanoes} earthquakes={earthquakes}  /> : 
+     { loaded ? <Map volcanoes={volcanoes} earthquakes={earthquakes}  /> : 
      <h1 className='loader'>Loading
         <span className="dots">
        <span>.</span><span>.</span><span>.</span></span>

@@ -38,7 +38,9 @@ const Map = ({ volcanoes, earthquakes }) => {
                 <h2>Magnitude &#60; 3 &#8595;</h2>
             </div>
           </div> }
+
 {mobile && <button className='legend_button' onClick={() => setOpenLegend(prev => !prev)}>☰</button> }
+        
         <MapContainer 
         style={{ height: '100%', width: '100%' }}
         center={position} 
