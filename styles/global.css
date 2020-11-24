@@ -89,11 +89,17 @@ h2 {
     justify-content:center; 
     align-items:center;
 }
-.legend {
+.legend, .magnitude {
     text-align: center;
     color:white;
     padding: 5px 8px;
     margin: 1rem;
+}
+.up {
+    background-color: #ffd900;
+}
+.below {
+    background-color: #6ce41c;
 }
 .total p {
     font-size: 1.2rem;
@@ -108,8 +114,5 @@ h2 {
     background-color: #d81111;
 }
 
-.earthquakes {
-    background-color: #ffee00;
-}
 
 
