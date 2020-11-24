@@ -32,10 +32,10 @@ const Map = ({ volcanoes, earthquakes }) => {
                 <h2>inactive</h2>
             </div>
             <div className='up magnitude'>
-                <h2>Magnitude higher 2 &#8593;</h2>
+                <h2>Magnitude &#62; 3 &#8593;</h2>
             </div>
             <div className='below magnitude'>
-                <h2>Magnitude 2 &#8595;</h2>
+                <h2>Magnitude &#60; 3 &#8595;</h2>
             </div>
           </div> }
 {mobile && <button className='legend_button' onClick={() => setOpenLegend(prev => !prev)}>☰</button> }
@@ -56,7 +56,7 @@ const Map = ({ volcanoes, earthquakes }) => {
             <CircleMarker 
               key={earthquake.id}
               center={[ earthquake.geometry.coordinates.[1], earthquake.geometry.coordinates.[0] ]} 
-              pathOptions={earthquake.properties.mag > 2 ? earthquakesColor : earthquakesColor2} 
+              pathOptions={earthquake.properties.mag > 3 ? earthquakesColor : earthquakesColor2} 
               radius={6}>
               <Popup> 
                 <div>
