@@ -4,9 +4,10 @@ import useMedia from 'use-media';
 
 const inactive = { color: '#141412' }
 const active = { color: '#d81111' }
+const earthquakesColor = { color: ' #ffd900' }
 
-const Map = ({ volcanoes,earthquakes }) => {
-  console.log(earthquakes);
+const Map = ({ volcanoes, earthquakes }) => {
+  console.log(earthquakes.features);
 
     const mobile = useMedia({maxWidth: 500});
     const position = [12.8797, 121.7740]
@@ -17,15 +18,18 @@ const Map = ({ volcanoes,earthquakes }) => {
             
             <div className='total legend'>
                 <p>Approximately</p>
-                <h2>{volcanoes.features.length}</h2>
+                {/* <h2>{volcanoes.features.length}</h2> */}
                 <p> Volcanoes in Total</p>
-              </div>
-              <div className='active legend'>
-                  <h2>Active</h2>
-              </div>
-              <div className='inactive legend'>
+            </div>
+
+            <div className='active legend'>
+                <h2>Active</h2>
+            </div>
+
+            <div className='inactive legend'>
                 <h2>inactive</h2>
-              </div>
+            </div>
+
           </div>
 
         <MapContainer 
@@ -40,6 +44,21 @@ const Map = ({ volcanoes,earthquakes }) => {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+          {earthquakes.features.map(feature => (
+            <CircleMarker 
+              key={feature.id}
+              center={[feature.geometry.coordinates.[1], feature.geometry.coordinates.[0]]} 
+              pathOptions={feature.properties.mag > 1 ? earthquakesColor : inactive} 
+              radius={4}>
+            <Popup className='pop_up'> 
+               <div className='pop_child'>
+                <p>Location: {feature.properties.place}</p>
+                <p>Date: {new Date(feature.properties.time).toDateString()}</p>
+                <p>Magnitude: {new Date(feature.properties.mag)}</p>
+               </div>
+              </Popup> 
+            </CircleMarker>
+        ))}
         {volcanoes.features.map(feature => (
             <CircleMarker 
               key={feature.properties.VolcanoID}

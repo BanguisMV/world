@@ -69,19 +69,12 @@ h1 {
 .legends {
     position: absolute;
     right: 0;
-    bottom: 0;
+    top: 0;
     margin: 1rem;
     z-index: 2000;
    
 }
-@media (max-width:500px) {
- .legends {
-    left: 0;
 
-    display: flex;
-    align-items: center;
- }
-}
 
 
 
@@ -114,4 +107,9 @@ h2 {
 .active {
     background-color: #d81111;
 }
+
+.earthquakes {
+    background-color: #ffee00;
+}
+
 
