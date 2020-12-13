@@ -1,6 +1,6 @@
-<!-- # Bantay COVID
 
-## [View it here](https://covid.banguismv.wtf)
+
+## [View it here](https://world.banguismv.vercel.app/)
 
 ![Homepage](https://raw.githubusercontent.com/BanguisMV/bantay-covid-ph/main/preview/Responsive.JPG)
 
@@ -8,8 +8,8 @@
 
 - [NextJS](https://nextjs.org/)
 - [Vercel](https://vercel.com)
-- [Disease SH](https://disease.sh/)
-- [Chart JS](https://chartjs.org/)
-- [Styled Components](https://styled-components.com/) -->
+- [USGS API](https://earthquake.usgs.gov/earthquakes/map/)
+
+
 # world
 # world
